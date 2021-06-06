@@ -1,4 +1,4 @@
-import { CosmosClient, SqlParameter } from '@azure/cosmos'
+import { CosmosClient, ItemResponse, SqlParameter } from '@azure/cosmos'
 
 export interface IQuery {
   query: string
@@ -32,7 +32,17 @@ export const findAll = async (nomeTabela: string, { query, parameters }: IQuery)
   return resources
 }
 
+export const findOne = async (nomeTabela: string, idDocumento): Promise<ItemResponse<any>> => {
+  const container = client.database(DATABASE_ID).container(nomeTabela)
+  return container.item(idDocumento).read()
+}
+
 export const deleteById = async (nomeTabela: string, idDocumento: string) => {
   const container = client.database(DATABASE_ID).container(nomeTabela)
   await container.item(idDocumento).delete()
+}
+
+export const update = async (nomeTabela: string, idDocumento: string, body: any) => {
+  const container = client.database(DATABASE_ID).container(nomeTabela)
+  await container.item(idDocumento).replace(body)
 }
