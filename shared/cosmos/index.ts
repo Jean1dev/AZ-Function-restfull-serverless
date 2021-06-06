@@ -31,3 +31,8 @@ export const findAll = async (nomeTabela: string, { query, parameters }: IQuery)
 
   return resources
 }
+
+export const deleteById = async (nomeTabela: string, idDocumento: string) => {
+  const container = client.database(DATABASE_ID).container(nomeTabela)
+  await container.item(idDocumento).delete()
+}
