@@ -5,7 +5,7 @@ export interface IQuery {
   parameters?: SqlParameter[]
 }
 
-const COSMOS_CONNECTION = 'AccountEndpoint=https://cosmos-db-jean.documents.azure.com:443/;AccountKey=te6NrywJWGN6wAXQPl0DVZUns1fLZ23Vy5orVnTHTd3mD2pzaFcJhKbwPFuTEk5zk16hPMoHDMNP6U1siK4tUQ==;'
+const COSMOS_CONNECTION = ''
 const DATABASE_ID = 'mydb'
 
 const client = new CosmosClient(COSMOS_CONNECTION)
